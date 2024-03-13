@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bv8prtycpexf6"]
+
+[ext_resource type="Texture2D" uid="uid://co7sqju26u5mx" path="res://MyArt/GamblerCards/coin.png" id="1_q8keg"]
+[ext_resource type="Script" path="res://characters/gambler/cards/gambler_single_attack.gd" id="2_pp2tf"]
+
+[resource]
+script = ExtResource("2_pp2tf")
+id = "gambler_single_attack"
+type = 0
+target = 1
+cost = 1
+icon = ExtResource("1_q8keg")
+tooltip_text = ""

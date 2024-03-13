@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dhwp1ukp16d5o"]
+
+[ext_resource type="FontFile" uid="uid://dskmdk146n4rq" path="res://art/pixel_rpg.ttf" id="1_bu7yl"]
+[ext_resource type="StyleBox" uid="uid://c0xarttyosfxt" path="res://Scenes/card_ui/card_base_stylebox.tres" id="1_j7eab"]
+
+[resource]
+default_font = ExtResource("1_bu7yl")
+default_font_size = 6
+Panel/styles/panel = ExtResource("1_j7eab")

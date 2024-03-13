@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dwh2o3qwvkg2j"]
+
+[node name="Tooltip" type="PanelContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_right = 60.0
+offset_bottom = 36.0
+grow_horizontal = 2

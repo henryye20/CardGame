@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dqd1c0uyahryk"]
+
+[ext_resource type="Texture2D" uid="uid://bcd41d0ie5o4e" path="res://MyArt/GamblerCards/intern.png" id="1_hdjff"]
+[ext_resource type="Script" path="res://characters/gambler/cards/gambler_block.gd" id="2_occst"]
+
+[resource]
+script = ExtResource("2_occst")
+id = "gambler_block"
+type = 1
+target = 0
+cost = 1
+icon = ExtResource("1_hdjff")
+tooltip_text = ""
