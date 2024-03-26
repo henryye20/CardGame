@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://dwh2o3qwvkg2j"]
+[gd_scene load_steps=3 format=3 uid="uid://dwh2o3qwvkg2j"]
+
+[ext_resource type="Theme" uid="uid://dhwp1ukp16d5o" path="res://main_theme.tres" id="1_us54b"]
+[ext_resource type="Texture2D" uid="uid://co7sqju26u5mx" path="res://MyArt/GamblerCards/coin.png" id="2_4afb0"]
 
 [node name="Tooltip" type="PanelContainer"]
 anchors_preset = 5
@@ -8,3 +11,29 @@ offset_left = -60.0
 offset_right = 60.0
 offset_bottom = 36.0
 grow_horizontal = 2
+theme = ExtResource("1_us54b")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TooltipIcon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+texture = ExtResource("2_4afb0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TooltipText" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "descirption "
