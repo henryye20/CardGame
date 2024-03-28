@@ -8,9 +8,9 @@
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -60.0
-offset_right = 60.0
-offset_bottom = 36.0
+offset_left = -85.0
+offset_right = 85.0
+offset_bottom = 45.0
 grow_horizontal = 2
 theme = ExtResource("1_us54b")
 script = ExtResource("2_22tuj")
@@ -22,22 +22,26 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="TooltipIcon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="TooltipIcon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 8)
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 texture = ExtResource("2_4afb0")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TooltipText" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="TooltipText" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/line_separation = 2
 bbcode_enabled = true
 text = "Description
 Description"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2

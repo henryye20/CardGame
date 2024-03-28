@@ -44,7 +44,7 @@ func _on_card_aim_started(card: CardUI) -> void:
 	selector.monitorable = true
 	current_card = card
 
-func _on_card_aim_ended(card: CardUI) -> void:
+func _on_card_aim_ended(_card: CardUI) -> void:
 	targeting = false
 	card_arc.clear_points()
 	selector.monitoring = false

@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8s5ljf5i3ial"]
+[gd_scene load_steps=15 format=3 uid="uid://b8s5ljf5i3ial"]
 
+[ext_resource type="Script" path="res://Scenes/battle/battle.gd" id="1_vg4vh"]
 [ext_resource type="Texture2D" uid="uid://dx8kqu5td0a2k" path="res://MyArt/CityBG.png" id="1_yg6fg"]
 [ext_resource type="PackedScene" uid="uid://cd1uh2272ir55" path="res://Scenes/enemy/enemy.tscn" id="2_67tir"]
 [ext_resource type="Script" path="res://Scenes/ui/hand.gd" id="2_p2oto"]
@@ -14,32 +15,33 @@
 [ext_resource type="PackedScene" uid="uid://dwh2o3qwvkg2j" path="res://Scenes/ui/tooltip.tscn" id="12_vnowo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qh4u7"]
-size = Vector2(256, 100)
+size = Vector2(362, 150)
 
 [node name="Battle" type="Node2D"]
+script = ExtResource("1_vg4vh")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.572549, 0.572549, 0.572549, 1)
-position = Vector2(128, 72)
+position = Vector2(180.9, 101.6)
+scale = Vector2(1.41484, 1.42222)
 texture = ExtResource("1_yg6fg")
-metadata/_edit_lock_ = true
 
 [node name="CardDropArea" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
-position = Vector2(128, 50)
+position = Vector2(181, 75)
 shape = SubResource("RectangleShape2D_qh4u7")
 debug_color = Color(0.877901, 0.240449, 0.614116, 0.117647)
 metadata/_edit_lock_ = true
 
 [node name="Enemy" parent="." instance=ExtResource("2_67tir")]
-position = Vector2(200, 53)
+position = Vector2(298, 80)
 stats = ExtResource("3_1qcfv")
 
 [node name="Player" parent="." instance=ExtResource("3_odyac")]
-position = Vector2(40, 56)
+position = Vector2(53, 83)
 stats = ExtResource("4_vepdf")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_0rbyd")]
@@ -53,7 +55,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -75.0
-offset_top = -30.0
+offset_top = -35.0
 offset_right = 75.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -79,5 +81,5 @@ char_stats = ExtResource("4_vepdf")
 char_stats = ExtResource("4_vepdf")
 
 [node name="Tooltip" parent="BattleUI" instance=ExtResource("12_vnowo")]
-offset_top = 4.0
-offset_bottom = 40.0
+offset_top = 7.0
+offset_bottom = 43.0
