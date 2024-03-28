@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8s5ljf5i3ial"]
+[gd_scene load_steps=14 format=3 uid="uid://b8s5ljf5i3ial"]
 
 [ext_resource type="Texture2D" uid="uid://dx8kqu5td0a2k" path="res://MyArt/CityBG.png" id="1_yg6fg"]
 [ext_resource type="PackedScene" uid="uid://cd1uh2272ir55" path="res://Scenes/enemy/enemy.tscn" id="2_67tir"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://bv8prtycpexf6" path="res://characters/gambler/cards/gambler_single_attack.tres" id="5_lnjws"]
 [ext_resource type="Resource" uid="uid://dqd1c0uyahryk" path="res://characters/gambler/cards/gambler_block.tres" id="6_gy2d8"]
 [ext_resource type="PackedScene" uid="uid://bsl1ihbq7htgr" path="res://Scenes/card_ui/mana_ui.tscn" id="11_i2cdr"]
+[ext_resource type="PackedScene" uid="uid://dwh2o3qwvkg2j" path="res://Scenes/ui/tooltip.tscn" id="12_vnowo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qh4u7"]
 size = Vector2(256, 100)
@@ -76,3 +77,7 @@ char_stats = ExtResource("4_vepdf")
 
 [node name="ManaUI" parent="BattleUI" instance=ExtResource("11_i2cdr")]
 char_stats = ExtResource("4_vepdf")
+
+[node name="Tooltip" parent="BattleUI" instance=ExtResource("12_vnowo")]
+offset_top = 4.0
+offset_bottom = 40.0
