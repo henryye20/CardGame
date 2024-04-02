@@ -1,28 +1,25 @@
 [gd_scene load_steps=15 format=3 uid="uid://b8s5ljf5i3ial"]
 
+[ext_resource type="Script" path="res://Scenes/battle/battle.gd" id="1_m242u"]
 [ext_resource type="Texture2D" uid="uid://dx8kqu5td0a2k" path="res://MyArt/CityBG.png" id="1_yg6fg"]
 [ext_resource type="PackedScene" uid="uid://cd1uh2272ir55" path="res://Scenes/enemy/enemy.tscn" id="2_67tir"]
 [ext_resource type="Script" path="res://Scenes/ui/hand.gd" id="2_p2oto"]
-[ext_resource type="PackedScene" uid="uid://bwrqsm682ckge" path="res://Scenes/card_ui/card_ui.tscn" id="2_uwp3c"]
 [ext_resource type="PackedScene" uid="uid://dwptef8rjve07" path="res://Scenes/card_target_selector/card_target_selector.tscn" id="3_0rbyd"]
 [ext_resource type="Resource" uid="uid://4vtqwmfat865" path="res://enemies/someguy/test_enemy.tres" id="3_1qcfv"]
 [ext_resource type="PackedScene" uid="uid://dpiyrjl8yy02g" path="res://Scenes/player/player.tscn" id="3_odyac"]
 [ext_resource type="Resource" uid="uid://f5e62susoc75" path="res://characters/gambler/gambler.tres" id="4_vepdf"]
-[ext_resource type="Resource" uid="uid://bv8prtycpexf6" path="res://characters/gambler/cards/gambler_single_attack.tres" id="5_lnjws"]
-[ext_resource type="Resource" uid="uid://dqd1c0uyahryk" path="res://characters/gambler/cards/gambler_block.tres" id="6_gy2d8"]
+[ext_resource type="Script" path="res://Scenes/ui/battle_ui.gd" id="7_6guhj"]
+[ext_resource type="Script" path="res://Scenes/player/player_handler.gd" id="8_qrtca"]
 [ext_resource type="PackedScene" uid="uid://bsl1ihbq7htgr" path="res://Scenes/card_ui/mana_ui.tscn" id="11_i2cdr"]
 [ext_resource type="PackedScene" uid="uid://dwh2o3qwvkg2j" path="res://Scenes/ui/tooltip.tscn" id="12_vnowo"]
-
-[sub_resource type="GDScript" id="GDScript_gisei"]
-script/source = "extends Node2D
-
-"
+[ext_resource type="Theme" uid="uid://dhwp1ukp16d5o" path="res://main_theme.tres" id="13_abu6y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qh4u7"]
 size = Vector2(362, 150)
 
 [node name="Battle" type="Node2D"]
-script = SubResource("GDScript_gisei")
+script = ExtResource("1_m242u")
+char_stats = ExtResource("4_vepdf")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -50,7 +47,12 @@ stats = ExtResource("4_vepdf")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_0rbyd")]
 
+[node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
+script = ExtResource("8_qrtca")
+hand = NodePath("../BattleUI/Hand")
+
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+script = ExtResource("7_6guhj")
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI"]
 anchors_preset = 7
@@ -66,24 +68,25 @@ grow_vertical = 0
 alignment = 1
 script = ExtResource("2_p2oto")
 
-[node name="CardUI" parent="BattleUI/Hand" instance=ExtResource("2_uwp3c")]
-layout_mode = 2
-card = ExtResource("5_lnjws")
-char_stats = ExtResource("4_vepdf")
-
-[node name="CardUI2" parent="BattleUI/Hand" instance=ExtResource("2_uwp3c")]
-layout_mode = 2
-card = ExtResource("5_lnjws")
-char_stats = ExtResource("4_vepdf")
-
-[node name="CardUI3" parent="BattleUI/Hand" instance=ExtResource("2_uwp3c")]
-layout_mode = 2
-card = ExtResource("6_gy2d8")
-char_stats = ExtResource("4_vepdf")
-
 [node name="ManaUI" parent="BattleUI" instance=ExtResource("11_i2cdr")]
 char_stats = ExtResource("4_vepdf")
 
 [node name="Tooltip" parent="BattleUI" instance=ExtResource("12_vnowo")]
 offset_top = 7.0
-offset_bottom = 43.0
+offset_bottom = 47.0
+
+[node name="EndTurnButton" type="Button" parent="BattleUI"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -24.0
+offset_right = -7.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("13_abu6y")
+text = "End Turn"

@@ -8,9 +8,9 @@
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -85.0
-offset_right = 85.0
-offset_bottom = 45.0
+offset_left = -87.5
+offset_right = 87.5
+offset_bottom = 40.0
 grow_horizontal = 2
 theme = ExtResource("1_us54b")
 script = ExtResource("2_22tuj")
