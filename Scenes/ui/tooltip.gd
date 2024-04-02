@@ -7,6 +7,7 @@ extends PanelContainer
 @onready var tooltip_text_label: RichTextLabel = %TooltipText
 
 var tween: Tween
+var is_visible := true
 
 func _ready() -> void:
 	Events.card_tooltip_requested.connect(show_tooltip)
@@ -18,6 +19,7 @@ func _ready() -> void:
 	
 func show_tooltip(icon:Texture,text:String) -> void:
 	#prevents multiple tooltips at once
+	is_visible = true
 	if tween:
 		tween.kill()
 		
@@ -29,11 +31,15 @@ func show_tooltip(icon:Texture,text:String) -> void:
 	tween.tween_property(self, "modulate", Color.WHITE,fadetime)
 	
 func hide_tooltip() -> void:
+	is_visible = false
 	if tween:
 		tween.kill()
+	get_tree().create_timer(fadetime, false).timeout.connect(hide_animation)
 	hide_animation()
 	
 func hide_animation() -> void:
-	tween = create_tween()
-	tween.tween_property(self, "modulate", Color.TRANSPARENT, fadetime)
-	tween.tween_callback(hide)
+	#skips animation if player is fast to remove flashing weirdness
+	if not is_visible:
+		tween = create_tween()
+		tween.tween_property(self, "modulate", Color.TRANSPARENT, fadetime)
+		tween.tween_callback(hide)

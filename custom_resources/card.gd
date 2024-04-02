@@ -25,7 +25,6 @@ func _get_targets(targets:Array[Node]) -> Array[Node]:
 
 	match target:
 		Target.SELF:
-			print("hi")
 			return tree.get_nodes_in_group("player")
 		Target.ALL_ENEMIES:
 			return tree.get_nodes_in_group("enemies")

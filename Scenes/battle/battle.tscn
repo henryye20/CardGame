@@ -1,6 +1,5 @@
 [gd_scene load_steps=15 format=3 uid="uid://b8s5ljf5i3ial"]
 
-[ext_resource type="Script" path="res://Scenes/battle/battle.gd" id="1_vg4vh"]
 [ext_resource type="Texture2D" uid="uid://dx8kqu5td0a2k" path="res://MyArt/CityBG.png" id="1_yg6fg"]
 [ext_resource type="PackedScene" uid="uid://cd1uh2272ir55" path="res://Scenes/enemy/enemy.tscn" id="2_67tir"]
 [ext_resource type="Script" path="res://Scenes/ui/hand.gd" id="2_p2oto"]
@@ -14,11 +13,16 @@
 [ext_resource type="PackedScene" uid="uid://bsl1ihbq7htgr" path="res://Scenes/card_ui/mana_ui.tscn" id="11_i2cdr"]
 [ext_resource type="PackedScene" uid="uid://dwh2o3qwvkg2j" path="res://Scenes/ui/tooltip.tscn" id="12_vnowo"]
 
+[sub_resource type="GDScript" id="GDScript_gisei"]
+script/source = "extends Node2D
+
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qh4u7"]
 size = Vector2(362, 150)
 
 [node name="Battle" type="Node2D"]
-script = ExtResource("1_vg4vh")
+script = SubResource("GDScript_gisei")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]

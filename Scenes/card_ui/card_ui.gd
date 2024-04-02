@@ -26,7 +26,7 @@ var tween: Tween
 var playable:= true:
 	set = _set_playable
 #cannot be accesed rn
-var disabled := false
+@export var disabled := false
 
 func _ready() -> void:
 	Events.card_aim_started.connect(_on_card_drag_or_aiming_started)
@@ -89,7 +89,8 @@ func _on_card_drag_or_aiming_started(used_card: CardUI) -> void:
 		return
 	disabled = true
 
-func _on_card_drag_or_aiming_ended() -> void:
+func _on_card_drag_or_aiming_ended(used_card: CardUI) -> void:
+	print("aim ended/drag ended")
 	disabled = false
 	self.playable = char_stats.can_play_card(card)
 

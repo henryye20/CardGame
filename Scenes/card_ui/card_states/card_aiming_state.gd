@@ -11,6 +11,7 @@ func enter() -> void:
 	Events.card_aim_started.emit(card_ui)
 	
 func exit() -> void:
+	print("exited aiming")
 	Events.card_aim_ended.emit(card_ui)
 	
 func on_input(event: InputEvent) -> void:
