@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://cd1uh2272ir55" path="res://Scenes/enemy/enemy.tscn" id="2_67tir"]
 [ext_resource type="Script" path="res://Scenes/ui/hand.gd" id="2_p2oto"]
 [ext_resource type="PackedScene" uid="uid://dwptef8rjve07" path="res://Scenes/card_target_selector/card_target_selector.tscn" id="3_0rbyd"]
-[ext_resource type="Resource" uid="uid://4vtqwmfat865" path="res://enemies/someguy/test_enemy.tres" id="3_1qcfv"]
 [ext_resource type="PackedScene" uid="uid://dpiyrjl8yy02g" path="res://Scenes/player/player.tscn" id="3_odyac"]
 [ext_resource type="Resource" uid="uid://f5e62susoc75" path="res://characters/gambler/gambler.tres" id="4_vepdf"]
+[ext_resource type="Resource" uid="uid://lbjnveetsxnq" path="res://enemies/someguy/crab_enemy.tres" id="5_ikp6x"]
 [ext_resource type="Script" path="res://Scenes/ui/battle_ui.gd" id="7_6guhj"]
 [ext_resource type="Script" path="res://Scenes/player/player_handler.gd" id="8_qrtca"]
 [ext_resource type="PackedScene" uid="uid://bsl1ihbq7htgr" path="res://Scenes/card_ui/mana_ui.tscn" id="11_i2cdr"]
@@ -39,7 +39,7 @@ metadata/_edit_lock_ = true
 
 [node name="Enemy" parent="." instance=ExtResource("2_67tir")]
 position = Vector2(298, 80)
-stats = ExtResource("3_1qcfv")
+stats = ExtResource("5_ikp6x")
 
 [node name="Player" parent="." instance=ExtResource("3_odyac")]
 position = Vector2(53, 83)
