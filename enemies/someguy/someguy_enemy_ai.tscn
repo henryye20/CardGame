@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://fqaive047gk0"]
+
+[ext_resource type="Script" path="res://Scenes/enemy/enemy_action_picker.gd" id="1_ofsuk"]
+[ext_resource type="Script" path="res://enemies/someguy/someguy_attack_action.gd" id="2_6dcsq"]
+[ext_resource type="Script" path="res://enemies/someguy/someguy_block_action.gd" id="3_pfado"]
+[ext_resource type="Script" path="res://enemies/someguy/someguy_summon_action.gd" id="4_4bw5l"]
+
+[node name="SomeguyEnemyAI" type="Node"]
+script = ExtResource("1_ofsuk")
+
+[node name="AttackAction" type="Node" parent="."]
+script = ExtResource("2_6dcsq")
+type = 1
+chance_weight = 1.0
+
+[node name="BlockAction" type="Node" parent="."]
+script = ExtResource("3_pfado")
+type = 1
+chance_weight = 1.0
+
+[node name="SummonAction" type="Node" parent="."]
+script = ExtResource("4_4bw5l")
