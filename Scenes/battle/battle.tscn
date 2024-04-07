@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b8s5ljf5i3ial"]
+[gd_scene load_steps=18 format=3 uid="uid://b8s5ljf5i3ial"]
 
 [ext_resource type="Script" path="res://Scenes/battle/battle.gd" id="1_m242u"]
 [ext_resource type="Texture2D" uid="uid://dx8kqu5td0a2k" path="res://MyArt/CityBG.png" id="1_yg6fg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/ui/hand.gd" id="2_p2oto"]
 [ext_resource type="PackedScene" uid="uid://dwptef8rjve07" path="res://Scenes/card_target_selector/card_target_selector.tscn" id="3_0rbyd"]
 [ext_resource type="PackedScene" uid="uid://dpiyrjl8yy02g" path="res://Scenes/player/player.tscn" id="3_odyac"]
+[ext_resource type="AudioStream" uid="uid://c4swgdextdcae" path="res://MyArt/Music/The_Caretaker_-_Its_Just_a_Burning_Memory_71392887.mp3" id="3_qfwov"]
 [ext_resource type="Script" path="res://Scenes/enemy/enemy_handler.gd" id="4_j08wv"]
 [ext_resource type="Resource" uid="uid://f5e62susoc75" path="res://characters/gambler/gambler.tres" id="4_vepdf"]
 [ext_resource type="Resource" uid="uid://lbjnveetsxnq" path="res://enemies/someguy/someguy_enemy.tres" id="5_ikp6x"]
@@ -22,6 +23,7 @@ size = Vector2(362, 150)
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_m242u")
 char_stats = ExtResource("4_vepdf")
+music = ExtResource("3_qfwov")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
