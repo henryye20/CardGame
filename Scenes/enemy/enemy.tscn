@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd1uh2272ir55"]
+[gd_scene load_steps=7 format=3 uid="uid://cd1uh2272ir55"]
 
 [ext_resource type="Texture2D" uid="uid://oe4w43wvk5ye" path="res://MyArt/someguy.png" id="1_b6sbm"]
 [ext_resource type="Script" path="res://Scenes/enemy/enemy.gd" id="1_je8so"]
 [ext_resource type="Texture2D" uid="uid://bt4okcofpe616" path="res://MyArt/arrow.png" id="2_keb2e"]
 [ext_resource type="PackedScene" uid="uid://bs17mjw6x2vsf" path="res://Scenes/ui/stats_ui.tscn" id="3_e4mg2"]
+[ext_resource type="PackedScene" uid="uid://dc4bvw4t5sbfx" path="res://Scenes/ui/intent_ui.tscn" id="5_c87d4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_532qa"]
 size = Vector2(52, 68)
@@ -27,6 +28,10 @@ shape = SubResource("RectangleShape2D_532qa")
 [node name="StatsUI" parent="." instance=ExtResource("3_e4mg2")]
 offset_top = 37.0
 offset_bottom = 53.0
+
+[node name="IntentUI" parent="." instance=ExtResource("5_c87d4")]
+offset_top = -54.0
+offset_bottom = -34.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

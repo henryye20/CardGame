@@ -9,7 +9,7 @@ func is_performable() -> bool:
 	if not enemy or already_used:
 		return false
 	
-	var is_low := enemy.stats.health <- hp_threshold
+	var is_low := enemy.stats.health <= hp_threshold
 	already_used = is_low
 	
 	return is_low

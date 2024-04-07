@@ -18,6 +18,8 @@ config/icon="res://Logo.png"
 [autoload]
 
 Events="*res://global/events.gd"
+Shaker="*res://global/shaker.gd"
+MusicPlayer="*res://global/music_player.tscn"
 
 [display]
 

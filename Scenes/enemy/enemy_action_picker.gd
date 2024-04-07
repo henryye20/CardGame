@@ -28,7 +28,9 @@ func get_first_conditional_action() -> EnemyAction:
 			continue
 		
 		#if condition is true
+		
 		if action.is_performable():
+			
 			return action
 		
 	return null

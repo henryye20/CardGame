@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b8s5ljf5i3ial"]
+[gd_scene load_steps=17 format=3 uid="uid://b8s5ljf5i3ial"]
 
 [ext_resource type="Script" path="res://Scenes/battle/battle.gd" id="1_m242u"]
 [ext_resource type="Texture2D" uid="uid://dx8kqu5td0a2k" path="res://MyArt/CityBG.png" id="1_yg6fg"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bsl1ihbq7htgr" path="res://Scenes/card_ui/mana_ui.tscn" id="11_i2cdr"]
 [ext_resource type="PackedScene" uid="uid://dwh2o3qwvkg2j" path="res://Scenes/ui/tooltip.tscn" id="12_vnowo"]
 [ext_resource type="Theme" uid="uid://dhwp1ukp16d5o" path="res://main_theme.tres" id="13_abu6y"]
+[ext_resource type="Script" path="res://Scenes/ui/red_flash.gd" id="15_1ugup"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qh4u7"]
 size = Vector2(362, 150)
@@ -24,7 +25,7 @@ char_stats = ExtResource("4_vepdf")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
-modulate = Color(0.572549, 0.572549, 0.572549, 1)
+modulate = Color(0.290196, 0.290196, 0.290196, 1)
 position = Vector2(180.9, 101.6)
 scale = Vector2(1.41484, 1.42222)
 texture = ExtResource("1_yg6fg")
@@ -94,3 +95,20 @@ grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("13_abu6y")
 text = "End Turn"
+
+[node name="RedFlash" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("15_1ugup")
+
+[node name="ColorRect" type="ColorRect" parent="RedFlash"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.521569, 0.521569, 0)
+
+[node name="Timer" type="Timer" parent="RedFlash"]
+wait_time = 0.1
+one_shot = true

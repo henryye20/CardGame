@@ -11,3 +11,4 @@ target = 0
 cost = 1
 icon = ExtResource("1_hdjff")
 tooltip_text = "[center]Gain [color=blue]5[/color] block[/center]"
+name = "Intern!"
