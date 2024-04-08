@@ -1,0 +1,205 @@
+[gd_scene load_steps=12 format=3 uid="uid://bbts8st6k4pl2"]
+
+[ext_resource type="Script" path="res://Scenes/ui/character_selector.gd" id="1_k83ay"]
+[ext_resource type="Shader" path="res://scroll.gdshader" id="2_jlggx"]
+[ext_resource type="Texture2D" uid="uid://5sgg5gji6bm2" path="res://Gambler.png" id="3_wkft0"]
+[ext_resource type="Texture2D" uid="uid://co7sqju26u5mx" path="res://MyArt/GamblerCards/coin.png" id="4_50otu"]
+[ext_resource type="Texture2D" uid="uid://c0ce81mxybnlh" path="res://MyArt/placeholder.png" id="5_qiv6s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_06vwv"]
+shader = ExtResource("2_jlggx")
+shader_parameter/speed = 0.1
+
+[sub_resource type="Gradient" id="Gradient_igt17"]
+colors = PackedColorArray(0.12549, 0.113725, 0.0431373, 0.54902, 0.494118, 0.458824, 0.262745, 0.54902)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_11loo"]
+gradient = SubResource("Gradient_igt17")
+width = 45
+height = 45
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 0.25)
+repeat = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_bff45"]
+font_size = 36
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.396078)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jf2co"]
+line_spacing = 5.0
+font_size = 14
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.396078)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_qb030"]
+
+[node name="CharacterSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k83ay")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_06vwv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_11loo")
+
+[node name="CharacterText" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -216.0
+offset_top = 17.0
+offset_right = 216.0
+offset_bottom = 135.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="CharacterText"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Rich Person"
+label_settings = SubResource("LabelSettings_bff45")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="CharacterText"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "rich.
+second line of text"
+label_settings = SubResource("LabelSettings_jf2co")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Character Portait" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -124.0
+offset_right = 120.0
+offset_bottom = -4.0
+grow_vertical = 0
+texture = ExtResource("3_wkft0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = -42.0
+offset_right = -17.0
+offset_bottom = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "Start"
+
+[node name="CharacterButtons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_right = 105.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="RichPersonButton" type="Button" parent="CharacterButtons"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_qb030")
+
+[node name="Icon" type="TextureRect" parent="CharacterButtons/RichPersonButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("4_50otu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="OtherButton" type="Button" parent="CharacterButtons"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_qb030")
+
+[node name="Icon" type="TextureRect" parent="CharacterButtons/OtherButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("5_qiv6s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="OtherButton2" type="Button" parent="CharacterButtons"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_qb030")
+
+[node name="Icon" type="TextureRect" parent="CharacterButtons/OtherButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("5_qiv6s")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CharacterButtons/RichPersonButton" to="." method="_on_rich_person_button_pressed"]
+[connection signal="pressed" from="CharacterButtons/OtherButton" to="." method="_on_other_button_pressed"]
+[connection signal="pressed" from="CharacterButtons/OtherButton2" to="." method="_on_other_button_2_pressed"]

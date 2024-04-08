@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="CardPile" load_steps=4 format=3 uid="uid://bjdrug366drf1"]
+[gd_resource type="Resource" script_class="CardPile" load_steps=5 format=3 uid="uid://bjdrug366drf1"]
 
 [ext_resource type="Resource" uid="uid://bv8prtycpexf6" path="res://characters/gambler/cards/gambler_single_attack.tres" id="1_5jk27"]
 [ext_resource type="Script" path="res://custom_resources/card_pile.gd" id="1_fr2b3"]
 [ext_resource type="Resource" uid="uid://dqd1c0uyahryk" path="res://characters/gambler/cards/gambler_block.tres" id="2_scosb"]
+[ext_resource type="Resource" uid="uid://l6masi1g4hea" path="res://characters/gambler/cards/gambler_airstrike.tres" id="3_6ac1x"]
 
 [resource]
 script = ExtResource("1_fr2b3")
-cards = Array[Resource("res://custom_resources/card.gd")]([ExtResource("1_5jk27"), ExtResource("1_5jk27"), ExtResource("1_5jk27"), ExtResource("1_5jk27"), ExtResource("1_5jk27"), ExtResource("2_scosb"), ExtResource("2_scosb"), ExtResource("2_scosb"), ExtResource("2_scosb"), ExtResource("2_scosb")])
+cards = Array[Resource("res://custom_resources/card.gd")]([ExtResource("1_5jk27"), ExtResource("1_5jk27"), ExtResource("1_5jk27"), ExtResource("1_5jk27"), ExtResource("1_5jk27"), ExtResource("2_scosb"), ExtResource("2_scosb"), ExtResource("2_scosb"), ExtResource("2_scosb"), ExtResource("2_scosb"), ExtResource("3_6ac1x"), ExtResource("3_6ac1x")])

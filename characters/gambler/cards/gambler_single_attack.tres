@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bv8prtycpexf6"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bv8prtycpexf6"]
 
 [ext_resource type="Texture2D" uid="uid://co7sqju26u5mx" path="res://MyArt/GamblerCards/coin.png" id="1_q8keg"]
 [ext_resource type="Script" path="res://characters/gambler/cards/gambler_single_attack.gd" id="2_pp2tf"]
+[ext_resource type="AudioStream" uid="uid://b1vpjjmi5cj3n" path="res://art/axe.ogg" id="3_ji8mb"]
 
 [resource]
 script = ExtResource("2_pp2tf")
@@ -12,3 +13,4 @@ cost = 1
 icon = ExtResource("1_q8keg")
 tooltip_text = "[center]Deal [color=red]6[/color] damage[/center]"
 name = "Coin Toss"
+sound = ExtResource("3_ji8mb")

@@ -16,12 +16,12 @@ func perform_action() -> void:
 	var target_array: Array[Node] = [target]
 	
 	damage_effect.amount = damage
-	
+	damage_effect.sound = sound
 	
 	tween.tween_property(enemy, "global_position", end, 1.0)
 	tween.tween_property(enemy.sprite_2d,"rotation_degrees",360,.4)
+	tween.parallel().tween_property(enemy, "scale",Vector2(1.5,1.5),0.3)
 	tween.tween_callback(damage_effect.execute.bind(target_array))
-	tween.parallel().tween_property(enemy, "scale",Vector2(1.5,1.5),0.1)
 	tween.tween_property(enemy, "scale",Vector2(1,1),0.1)
 	
 	

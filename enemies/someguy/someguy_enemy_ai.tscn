@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://fqaive047gk0"]
+[gd_scene load_steps=15 format=3 uid="uid://fqaive047gk0"]
 
 [ext_resource type="Script" path="res://Scenes/enemy/enemy_action_picker.gd" id="1_ofsuk"]
 [ext_resource type="Script" path="res://enemies/someguy/someguy_attack_action.gd" id="2_6dcsq"]
@@ -6,8 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://cxp5q2p4xpp24" path="res://MyArt/attackintent.png" id="3_tvpwc"]
 [ext_resource type="Script" path="res://custom_resources/intent.gd" id="4_1c551"]
 [ext_resource type="Script" path="res://enemies/someguy/someguy_summon_action.gd" id="4_4bw5l"]
+[ext_resource type="AudioStream" uid="uid://de2ryat1pxq6" path="res://art/enemy_attack.ogg" id="5_05i0w"]
 [ext_resource type="Texture2D" uid="uid://bbsrciq40fgg0" path="res://MyArt/defendintent.png" id="6_52dn4"]
 [ext_resource type="Texture2D" uid="uid://bge4yw8rymhfr" path="res://MyArt/someguysummon.png" id="8_8qvh2"]
+[ext_resource type="AudioStream" uid="uid://df64e7qat73gs" path="res://art/block.ogg" id="8_gsdvm"]
+[ext_resource type="AudioStream" uid="uid://dixklg6g4jnsq" path="res://art/slash.ogg" id="11_1vyn8"]
 
 [sub_resource type="Resource" id="Resource_v8uip"]
 script = ExtResource("4_1c551")
@@ -29,17 +32,21 @@ script = ExtResource("1_ofsuk")
 
 [node name="AttackAction" type="Node" parent="."]
 script = ExtResource("2_6dcsq")
+damage = null
 intent = SubResource("Resource_v8uip")
+sound = ExtResource("5_05i0w")
 type = 1
-chance_weight = 1.0
+chance_weight = 3.0
 
 [node name="BlockAction" type="Node" parent="."]
 script = ExtResource("3_pfado")
 block = 5
 intent = SubResource("Resource_jt6bu")
+sound = ExtResource("8_gsdvm")
 type = 1
-chance_weight = 1.0
+chance_weight = 2.0
 
 [node name="SummonAction" type="Node" parent="."]
 script = ExtResource("4_4bw5l")
 intent = SubResource("Resource_pihgh")
+sound = ExtResource("11_1vyn8")

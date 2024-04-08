@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b8s5ljf5i3ial"]
+[gd_scene load_steps=20 format=3 uid="uid://b8s5ljf5i3ial"]
 
 [ext_resource type="Script" path="res://Scenes/battle/battle.gd" id="1_m242u"]
 [ext_resource type="Texture2D" uid="uid://dx8kqu5td0a2k" path="res://MyArt/CityBG.png" id="1_yg6fg"]
@@ -12,6 +12,8 @@
 [ext_resource type="Resource" uid="uid://lbjnveetsxnq" path="res://enemies/someguy/someguy_enemy.tres" id="5_ikp6x"]
 [ext_resource type="Script" path="res://Scenes/ui/battle_ui.gd" id="7_6guhj"]
 [ext_resource type="Script" path="res://Scenes/player/player_handler.gd" id="8_qrtca"]
+[ext_resource type="Resource" uid="uid://cxnujmyr8xfsq" path="res://enemies/gerb/gerb_enemy.tres" id="8_w3h8i"]
+[ext_resource type="PackedScene" uid="uid://cpl7xi537w35x" path="res://Scenes/ui/battle_over_panel.tscn" id="11_d7mvg"]
 [ext_resource type="PackedScene" uid="uid://bsl1ihbq7htgr" path="res://Scenes/card_ui/mana_ui.tscn" id="11_i2cdr"]
 [ext_resource type="PackedScene" uid="uid://dwh2o3qwvkg2j" path="res://Scenes/ui/tooltip.tscn" id="12_vnowo"]
 [ext_resource type="Theme" uid="uid://dhwp1ukp16d5o" path="res://main_theme.tres" id="13_abu6y"]
@@ -41,10 +43,18 @@ shape = SubResource("RectangleShape2D_qh4u7")
 debug_color = Color(0.877901, 0.240449, 0.614116, 0.117647)
 metadata/_edit_lock_ = true
 
-[node name="EnemyHandler" type="Node2D" parent="."]
+[node name="EnemyHandler" type="Node2D" parent="." groups=["enemyhandler"]]
 script = ExtResource("4_j08wv")
 
-[node name="Enemy" parent="EnemyHandler" instance=ExtResource("2_67tir")]
+[node name="GerbEnemy" parent="EnemyHandler" instance=ExtResource("2_67tir")]
+position = Vector2(178, 77)
+stats = ExtResource("8_w3h8i")
+
+[node name="SomeguyEnemy" parent="EnemyHandler" instance=ExtResource("2_67tir")]
+position = Vector2(240, 100)
+stats = ExtResource("5_ikp6x")
+
+[node name="SomeguyEnemy22" parent="EnemyHandler" instance=ExtResource("2_67tir")]
 position = Vector2(298, 80)
 stats = ExtResource("5_ikp6x")
 
@@ -57,6 +67,12 @@ stats = ExtResource("4_vepdf")
 [node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("8_qrtca")
 hand = NodePath("../BattleUI/Hand")
+
+[node name="BattleOverLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="BattleOverPanel" parent="BattleOverLayer" instance=ExtResource("11_d7mvg")]
+visible = false
 
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("7_6guhj")

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dqd1c0uyahryk"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dqd1c0uyahryk"]
 
 [ext_resource type="Texture2D" uid="uid://bcd41d0ie5o4e" path="res://MyArt/GamblerCards/intern.png" id="1_hdjff"]
 [ext_resource type="Script" path="res://characters/gambler/cards/gambler_block.gd" id="2_occst"]
+[ext_resource type="AudioStream" uid="uid://df64e7qat73gs" path="res://art/block.ogg" id="3_ubukn"]
 
 [resource]
 script = ExtResource("2_occst")
@@ -12,3 +13,4 @@ cost = 1
 icon = ExtResource("1_hdjff")
 tooltip_text = "[center]Gain [color=blue]5[/color] block[/center]"
 name = "Intern!"
+sound = ExtResource("3_ubukn")

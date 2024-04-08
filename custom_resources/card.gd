@@ -14,6 +14,7 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export var icon: Texture
 @export_multiline var tooltip_text: String
 @export var name: String
+@export var sound: AudioStream
 
 func is_single_targeted() -> bool:
 	return target == Target.SINGLE_ENEMY

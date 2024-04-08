@@ -1,0 +1,36 @@
+[gd_scene load_steps=11 format=3 uid="uid://u61ji1usiqxm"]
+
+[ext_resource type="Script" path="res://Scenes/enemy/enemy_action_picker.gd" id="1_y025b"]
+[ext_resource type="Script" path="res://enemies/gerb/gerb_attack_action.gd" id="2_s45kn"]
+[ext_resource type="Texture2D" uid="uid://cxp5q2p4xpp24" path="res://MyArt/attackintent.png" id="3_s2x3p"]
+[ext_resource type="Script" path="res://enemies/gerb/gerb_block_action.gd" id="3_tja4u"]
+[ext_resource type="Script" path="res://custom_resources/intent.gd" id="4_vpu6u"]
+[ext_resource type="AudioStream" uid="uid://de2ryat1pxq6" path="res://art/enemy_attack.ogg" id="5_1cxon"]
+[ext_resource type="Texture2D" uid="uid://bbsrciq40fgg0" path="res://MyArt/defendintent.png" id="7_5eq8d"]
+[ext_resource type="AudioStream" uid="uid://k8m4o3hlwm7l" path="res://art/enemy_block.ogg" id="8_q53ih"]
+
+[sub_resource type="Resource" id="Resource_f3dq4"]
+script = ExtResource("4_vpu6u")
+number = "2x4"
+icon = ExtResource("3_s2x3p")
+
+[sub_resource type="Resource" id="Resource_3iwpn"]
+script = ExtResource("4_vpu6u")
+number = "8"
+icon = ExtResource("7_5eq8d")
+
+[node name="GerbEnemyAI" type="Node"]
+script = ExtResource("1_y025b")
+
+[node name="GerbAttackAction" type="Node" parent="."]
+script = ExtResource("2_s45kn")
+intent = SubResource("Resource_f3dq4")
+sound = ExtResource("5_1cxon")
+type = 1
+chance_weight = 2.0
+
+[node name="GerbBlockAction" type="Node" parent="."]
+script = ExtResource("3_tja4u")
+intent = SubResource("Resource_3iwpn")
+sound = ExtResource("8_q53ih")
+chance_weight = 1.0

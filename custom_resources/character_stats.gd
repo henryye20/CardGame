@@ -1,9 +1,16 @@
 class_name CharacterStats
 extends Stats
 
+@export_group("visuals")
+@export var character_name: String
+@export_multiline var description: String
+@export var portrait: Texture
+
+@export_group("Gameplay Data")
 @export var starting_deck: CardPile
 @export var cards_per_turn: int
 @export var max_mana: int
+
 
 var mana: int :
 	set = set_mana
