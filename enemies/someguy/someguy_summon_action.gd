@@ -1,9 +1,8 @@
 extends EnemyAction
-#not tutorial code :D
-@export var hp_threshold := 5
+@export var hp_threshold := -1
 
 var already_used := false
-const someguy := preload("res://Scenes/enemy/enemy.tscn")
+var someguy := preload("res://enemies/someguy/someguy.tscn")
 
 func is_performable() -> bool:
 	if not enemy or already_used:
@@ -15,6 +14,7 @@ func is_performable() -> bool:
 	return is_low
 
 func perform_action() -> void:
+	#code breaks idk why : D
 	#var new_guy = someguy.instantiate()
 	#new_guy.add_to_group("enemies")
 	#get_tree().get_first_node_in_group("enemyhandler").add_child(new_guy)

@@ -54,7 +54,7 @@ stats = ExtResource("8_w3h8i")
 position = Vector2(240, 100)
 stats = ExtResource("5_ikp6x")
 
-[node name="SomeguyEnemy22" parent="EnemyHandler" instance=ExtResource("2_67tir")]
+[node name="SomeguyEnemy2" parent="EnemyHandler" instance=ExtResource("2_67tir")]
 position = Vector2(298, 80)
 stats = ExtResource("5_ikp6x")
 

@@ -51,9 +51,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -105.0
-offset_top = -74.5
+offset_top = -74.0
 offset_right = 105.0
-offset_bottom = -37.5
+offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "CardGame"
@@ -78,6 +78,7 @@ theme_override_constants/separation = 5
 
 [node name="Continue" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 theme_override_font_sizes/font_size = 12

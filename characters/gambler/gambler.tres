@@ -6,8 +6,8 @@
 
 [resource]
 script = ExtResource("1_l7fuw")
-character_name = "Rich Person"
-description = "rich"
+character_name = "rich"
+description = "Rich Person"
 portrait = ExtResource("1_jkhkf")
 starting_deck = ExtResource("3_pa1ai")
 cards_per_turn = 4

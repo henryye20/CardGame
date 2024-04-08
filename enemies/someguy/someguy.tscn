@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0h7lulx83sqs"]
+
+[ext_resource type="Script" path="res://Scenes/enemy/enemy.gd" id="1_n8wlr"]
+[ext_resource type="Resource" uid="uid://lbjnveetsxnq" path="res://enemies/someguy/someguy_enemy.tres" id="2_lgq3x"]
+[ext_resource type="Texture2D" uid="uid://oe4w43wvk5ye" path="res://MyArt/someguy.png" id="2_mjqxv"]
+[ext_resource type="Texture2D" uid="uid://bt4okcofpe616" path="res://MyArt/arrow.png" id="3_y05en"]
+[ext_resource type="PackedScene" uid="uid://bs17mjw6x2vsf" path="res://Scenes/ui/stats_ui.tscn" id="4_oyf37"]
+[ext_resource type="PackedScene" uid="uid://dc4bvw4t5sbfx" path="res://Scenes/ui/intent_ui.tscn" id="5_6ss62"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_532qa"]
+size = Vector2(52, 68)
+
+[node name="Enemy" type="Area2D" groups=["enemies"]]
+collision_layer = 4
+script = ExtResource("1_n8wlr")
+stats = ExtResource("2_lgq3x")
+
+[node name="EnemyTexture" type="Sprite2D" parent="."]
+texture = ExtResource("2_mjqxv")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(33, 0)
+rotation = 1.5708
+texture = ExtResource("3_y05en")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_532qa")
+
+[node name="StatsUI" parent="." instance=ExtResource("4_oyf37")]
+offset_top = 37.0
+offset_bottom = 53.0
+
+[node name="IntentUI" parent="." instance=ExtResource("5_6ss62")]
+offset_top = -54.0
+offset_bottom = -34.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
