@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bdsw0c8x33yr8"]
+[gd_scene load_steps=15 format=3 uid="uid://bdsw0c8x33yr8"]
 
 [ext_resource type="Script" path="res://Scenes/run/run.gd" id="1_ul7ne"]
 [ext_resource type="Resource" uid="uid://tdl0fj7nne5s" path="res://Scenes/run/run_startup.tres" id="2_5goow"]
@@ -12,28 +12,10 @@
 [ext_resource type="Resource" uid="uid://di7mvh8ng3ei8" path="res://characters/gambler/cards/gambler_double.tres" id="6_c4iqs"]
 [ext_resource type="PackedScene" uid="uid://bfe1idqswl1vi" path="res://Scenes/ui/gold_ui.tscn" id="6_vfcn7"]
 [ext_resource type="Texture2D" uid="uid://b2b7w0rl2ep64" path="res://MyArt/heart.png" id="9_8v5xc"]
-[ext_resource type="Texture2D" uid="uid://wtx8vh0qdtwx" path="res://MyArt/WHEEL.png" id="13_rpyuh"]
-[ext_resource type="Shader" path="res://Scenes/run/scroll2.gdshader" id="13_whstr"]
-[ext_resource type="Texture2D" uid="uid://bt4okcofpe616" path="res://MyArt/arrow.png" id="15_4gtdt"]
+[ext_resource type="Texture2D" uid="uid://dkpmx7eetfye6" path="res://MyArt/art.png" id="13_3ey4y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pnwmc"]
 font_size = 9
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dduft"]
-shader = ExtResource("13_whstr")
-
-[sub_resource type="Gradient" id="Gradient_q2wwa"]
-offsets = PackedFloat32Array(0, 0.256684, 0.483957, 0.574866, 0.671123, 1)
-colors = PackedColorArray(0.572549, 0.694118, 0, 1, 0.745098, 0.682353, 0.254902, 1, 0.941176, 0.282353, 0.231373, 1, 0.984314, 0.690196, 0.960784, 1, 0.176471, 0.670588, 0.976471, 1, 0.301961, 0.835294, 0.14902, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rkr21"]
-gradient = SubResource("Gradient_q2wwa")
-width = 4
-height = 12
-fill = 1
-fill_from = Vector2(0.410256, 0.683761)
-fill_to = Vector2(0.619658, 0.286325)
-repeat = 2
 
 [node name="Run" type="Node" groups=["run"]]
 script = ExtResource("1_ul7ne")
@@ -86,9 +68,16 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Battle"
 
+[node name="Art" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(305, 106)
+texture = ExtResource("13_3ey4y")
+
 [node name="CurrentView" type="Node" parent="."]
 
 [node name="TopBar" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 layer = 3
 
 [node name="Background" type="ColorRect" parent="TopBar"]
@@ -150,42 +139,6 @@ horizontal_alignment = 2
 [node name="DeckView" parent="TopBar" instance=ExtResource("6_2ny1w")]
 unique_name_in_owner = true
 visible = false
-
-[node name="WheelStuff" type="CanvasLayer" parent="."]
-layer = 5
-
-[node name="WheelBackground" type="TextureRect" parent="WheelStuff"]
-unique_name_in_owner = true
-texture_repeat = 2
-material = SubResource("ShaderMaterial_dduft")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_rkr21")
-metadata/_edit_use_anchors_ = true
-
-[node name="WheelPicker" type="TextureRect" parent="WheelStuff"]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -77.0
-offset_top = -23.0
-offset_right = -37.0
-offset_bottom = 17.0
-grow_horizontal = 0
-grow_vertical = 2
-rotation = 1.5708
-texture = ExtResource("15_4gtdt")
-metadata/_edit_use_anchors_ = true
-
-[node name="Wheel" type="Sprite2D" parent="WheelStuff"]
-unique_name_in_owner = true
-position = Vector2(180, 99)
-texture = ExtResource("13_rpyuh")
 
 [connection signal="pressed" from="Buttons/BuyButton" to="." method="_on_buy_button_pressed"]
 [connection signal="pressed" from="Buttons/HealthButton" to="." method="_on_health_button_pressed"]

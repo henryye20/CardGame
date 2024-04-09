@@ -14,8 +14,9 @@ var gold_to_add := 80
 var cost := 50
 const heal_cost := 30
 const mana_cost := 300
-@onready var wheel_stuff = $WheelStuff
-@onready var wheel_picker = $WheelStuff/WheelPicker
+#@onready var wheel_stuff :Control = %WheelStuff
+#@onready var wheel: Sprite2D = %Wheel
+
 
 @onready var current_view = $CurrentView
 @onready var gold_ui: GoldUI = %GoldUI
@@ -27,8 +28,11 @@ const mana_cost := 300
 @onready var mana_button = %ManaButton
 @onready var battle_button = %BattleButton
 
+@onready var top_bar = %TopBar
 
 @onready var health_label = %HealthLabel
+
+@onready var art = %Art
 
 
 var stats:RunStats
@@ -37,7 +41,7 @@ var character: CharacterStats
 
 func _ready() -> void:
 	
-		
+	Events.art_enable.connect(func(): art.show())
 	if not run_startup:
 		return
 	
@@ -53,6 +57,9 @@ func _start_run() -> void:
 	health_label.text = str(character.health) + "/" + str(character.max_health)
 	_setup_event_connections()
 	_setup_top_bar()
+	_check_gold(cost,buy_button)
+	_check_gold(heal_cost,heal_button)
+	_check_gold(mana_cost,mana_button)
 	
 	
 
@@ -82,7 +89,7 @@ func _setup_event_connections() -> void:
 	Events.player_hit.connect(_update_health)
 	
 	Events.double_played.connect(_double_mana)
-	Events.gamble_played.connect(_gamble)
+	#Events.gamble_played.connect(_gamble)
 	
 	battle_button.pressed.connect(_on_battle_button_press)
 func _on_battle_won() ->void:
@@ -141,8 +148,3 @@ func _double_mana():
 	character.set_mana(new_mana)
 
 
-func _gamble():
-	times_gambled +=1
-
-	
-	

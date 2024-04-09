@@ -21,6 +21,7 @@ signal player_turn_ended
 signal player_hit
 signal player_died
 signal player_stats(run)
+signal art_enable
 
 #Enemy events
 signal enemy_action_completed(enemy:Enemy)
@@ -29,6 +30,7 @@ signal enemy_turn_ended
 #battle events
 signal battle_over_screen_requested(text:String,type:BattleOverPanel.Type)
 signal battle_won
+signal battle_start
 
 #battle reward events
 signal battle_reward_exited

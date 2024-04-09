@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b8s5ljf5i3ial"]
+[gd_scene load_steps=30 format=3 uid="uid://b8s5ljf5i3ial"]
 
 [ext_resource type="Script" path="res://Scenes/battle/battle.gd" id="1_m242u"]
 [ext_resource type="Texture2D" uid="uid://dx8kqu5td0a2k" path="res://MyArt/CityBG.png" id="1_yg6fg"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dpiyrjl8yy02g" path="res://Scenes/player/player.tscn" id="3_odyac"]
 [ext_resource type="AudioStream" uid="uid://c4swgdextdcae" path="res://MyArt/Music/The_Caretaker_-_Its_Just_a_Burning_Memory_71392887.mp3" id="3_qfwov"]
 [ext_resource type="Script" path="res://Scenes/enemy/enemy_handler.gd" id="4_j08wv"]
+[ext_resource type="AudioStream" uid="uid://cjk5hgxycspsc" path="res://MyArt/SFX/Yay Kids Crowd - QuickSounds.com.mp3" id="4_myh51"]
 [ext_resource type="Resource" uid="uid://f5e62susoc75" path="res://characters/gambler/gambler.tres" id="4_vepdf"]
 [ext_resource type="Resource" uid="uid://lbjnveetsxnq" path="res://enemies/someguy/someguy_enemy.tres" id="5_ikp6x"]
 [ext_resource type="Script" path="res://Scenes/ui/battle_ui.gd" id="7_6guhj"]
@@ -21,14 +22,34 @@
 [ext_resource type="PackedScene" uid="uid://qcymjo6febnv" path="res://Scenes/ui/card_pile_opener.tscn" id="18_fat3i"]
 [ext_resource type="Texture2D" uid="uid://be5dsru3vmjnw" path="res://MyArt/discardpile.png" id="19_is2wv"]
 [ext_resource type="PackedScene" uid="uid://c3cathy2dv6ch" path="res://Scenes/ui/card_pile_view.tscn" id="21_h0s6b"]
+[ext_resource type="Shader" path="res://Scenes/run/scroll2.gdshader" id="22_awldy"]
+[ext_resource type="Texture2D" uid="uid://bt4okcofpe616" path="res://MyArt/arrow.png" id="23_3wclw"]
+[ext_resource type="Texture2D" uid="uid://wtx8vh0qdtwx" path="res://MyArt/WHEEL.png" id="24_xfbp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qh4u7"]
 size = Vector2(362, 150)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nygml"]
+shader = ExtResource("22_awldy")
+
+[sub_resource type="Gradient" id="Gradient_q2wwa"]
+offsets = PackedFloat32Array(0, 0.256684, 0.483957, 0.574866, 0.671123, 1)
+colors = PackedColorArray(0.572549, 0.694118, 0, 1, 0.745098, 0.682353, 0.254902, 1, 0.941176, 0.282353, 0.231373, 1, 0.984314, 0.690196, 0.960784, 1, 0.176471, 0.670588, 0.976471, 1, 0.301961, 0.835294, 0.14902, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ang80"]
+gradient = SubResource("Gradient_q2wwa")
+width = 4
+height = 12
+fill = 1
+fill_from = Vector2(0.410256, 0.683761)
+fill_to = Vector2(0.619658, 0.286325)
+repeat = 2
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_m242u")
 char_stats = ExtResource("4_vepdf")
 music = ExtResource("3_qfwov")
+wheelsfx = ExtResource("4_myh51")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -196,5 +217,49 @@ visible = false
 [node name="DiscardPileView" parent="CardPileViews" instance=ExtResource("21_h0s6b")]
 unique_name_in_owner = true
 visible = false
+
+[node name="WheelLayer" type="CanvasLayer" parent="."]
+
+[node name="WheelStuff" type="Control" parent="WheelLayer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 362.0
+offset_bottom = 204.0
+
+[node name="WheelBackground" type="TextureRect" parent="WheelLayer/WheelStuff"]
+unique_name_in_owner = true
+texture_repeat = 2
+material = SubResource("ShaderMaterial_nygml")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ang80")
+metadata/_edit_use_anchors_ = true
+
+[node name="WheelPicker" type="TextureRect" parent="WheelLayer/WheelStuff"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -20.0
+offset_right = -32.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 1.5708
+texture = ExtResource("23_3wclw")
+
+[node name="Wheel" type="Sprite2D" parent="WheelLayer/WheelStuff"]
+unique_name_in_owner = true
+position = Vector2(180, 99)
+texture = ExtResource("24_xfbp3")
 
 [connection signal="pressed" from="BattleUI/WinButton" to="." method="_on_win_button_pressed"]
