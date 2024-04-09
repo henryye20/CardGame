@@ -2,14 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://csg3ikid23vxv" path="res://MyArt/PlayerCharacters/Gambler/Gambler.png" id="1_jkhkf"]
 [ext_resource type="Script" path="res://custom_resources/character_stats.gd" id="1_l7fuw"]
-[ext_resource type="Resource" uid="uid://c1f740lxqnral" path="res://characters/gambler/gambler_starting_deck2.tres" id="3_gsbd6"]
+[ext_resource type="Resource" uid="uid://bjdrug366drf1" path="res://characters/gambler/gambler_starting_deck.tres" id="3_hkjdc"]
 
 [resource]
 script = ExtResource("1_l7fuw")
 character_name = "willing to risk it all"
 description = "Gambler"
 portrait = ExtResource("1_jkhkf")
-starting_deck = ExtResource("3_gsbd6")
+starting_deck = ExtResource("3_hkjdc")
 cards_per_turn = 4
 max_mana = 3
 max_health = 70

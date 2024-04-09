@@ -109,8 +109,9 @@ func _on_battle_button_press():
 func _on_buy_button_pressed():
 	randi_range(0,buyable_cards.size()-1)
 	character.deck.add_card(buyable_cards[i])
-	cost += 10
 	stats.gold -= cost
+	cost += 10
+	
 	_check_gold(cost,buy_button)
 	buy_button.text = "Buy Random Card $%s" % cost
 	
