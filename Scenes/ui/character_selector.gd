@@ -21,7 +21,7 @@ func _on_start_button_pressed():
 	print("Start new run with %s"% current_character.character_name)
 	run_startup.type = RunStartup.Type.NEW_RUN
 	run_startup.picked_character = current_character
-	get_tree().change_scene_to_packed(BATTLE_SCENE)
+	get_tree().change_scene_to_packed(RUN_SCENE)
 	
 func _on_rich_person_button_pressed():
 	current_character = RICHPERSON_STATS

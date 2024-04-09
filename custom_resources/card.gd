@@ -1,7 +1,10 @@
 class_name Card
 extends Resource
 enum Type {ATTACK, SKILL, POWER}
+
 enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
+
+
 
 @export_group("Card Attributes") #groups the lower variables and gives them a name(purely cosmetic)
 @export var id: String

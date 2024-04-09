@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bl7w7anis3qox"]
+
+[ext_resource type="Texture2D" uid="uid://3g2hy5u75qu0" path="res://MyArt/GamblerCards/gamble.png" id="1_202pf"]
+[ext_resource type="Script" path="res://characters/gambler/cards/gambler_gamble.gd" id="1_tqftn"]
+
+[resource]
+script = ExtResource("1_tqftn")
+id = "gambler_gamble"
+type = 1
+target = 0
+cost = 3
+icon = ExtResource("1_202pf")
+tooltip_text = "[center][color=#FF0000]G[/color][color=#FF6D00]A[/color][color=#FFDA00]M[/color][color=#B6FF00]B[/color][color=#48FF00]L[/color][color=#00FF24]I[/color][color=#00FF91]N[/color][color=#00FEFF]G[/color] [color=#0024FF]T[/color][color=#4800FF]I[/color][color=#B600FF]M[/color][color=#FF00DA]E[/color][color=#FF006D]![/color][/center]"
+name = "Gamble"

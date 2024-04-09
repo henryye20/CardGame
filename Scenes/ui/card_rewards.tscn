@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2sn8ta6vo4sv"]
+
+[ext_resource type="Script" path="res://Scenes/ui/card_rewards.gd" id="1_lcqav"]
+[ext_resource type="PackedScene" uid="uid://ky1hqa1gcf40" path="res://Scenes/ui/card_menu_ui.tscn" id="1_mc1xq"]
+[ext_resource type="PackedScene" uid="uid://dhh66gm3r0cp4" path="res://Scenes/ui/card_tooltip_popup.tscn" id="2_wykje"]
+
+[node name="CardRewards" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.627451)
+script = ExtResource("1_lcqav")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Cards" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CardMenuUI" parent="VBoxContainer/Cards" instance=ExtResource("1_mc1xq")]
+layout_mode = 2
+
+[node name="SkipCardReward" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Skip"
+
+[node name="CardTooltipPopup" parent="." instance=ExtResource("2_wykje")]
+layout_mode = 1
+
+[node name="TakeButton" type="Button" parent="CardTooltipPopup"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -44.0
+offset_right = 30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Take"

@@ -1,25 +1,83 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdsw0c8x33yr8"]
+[gd_scene load_steps=20 format=3 uid="uid://bdsw0c8x33yr8"]
 
-[ext_resource type="PackedScene" uid="uid://cshkcu1c3hp8y" path="res://Scenes/map/map.tscn" id="1_q6m5s"]
 [ext_resource type="Script" path="res://Scenes/run/run.gd" id="1_ul7ne"]
 [ext_resource type="Resource" uid="uid://tdl0fj7nne5s" path="res://Scenes/run/run_startup.tres" id="2_5goow"]
+[ext_resource type="Resource" uid="uid://bv8prtycpexf6" path="res://characters/gambler/cards/gambler_single_attack.tres" id="2_jpjs0"]
+[ext_resource type="Resource" uid="uid://l6masi1g4hea" path="res://characters/gambler/cards/gambler_airstrike.tres" id="3_oiobk"]
+[ext_resource type="Texture2D" uid="uid://b74hnm7ljuhfv" path="res://MyArt/drawpile.png" id="4_1q1js"]
+[ext_resource type="Resource" uid="uid://dqd1c0uyahryk" path="res://characters/gambler/cards/gambler_block.tres" id="4_cdn1g"]
+[ext_resource type="Script" path="res://Scenes/ui/card_pile_opener.gd" id="4_sjqip"]
+[ext_resource type="Resource" uid="uid://bl7w7anis3qox" path="res://characters/gambler/cards/gambler_gamble.tres" id="5_2oopx"]
+[ext_resource type="PackedScene" uid="uid://c3cathy2dv6ch" path="res://Scenes/ui/card_pile_view.tscn" id="6_2ny1w"]
+[ext_resource type="Resource" uid="uid://di7mvh8ng3ei8" path="res://characters/gambler/cards/gambler_double.tres" id="6_c4iqs"]
+[ext_resource type="PackedScene" uid="uid://bfe1idqswl1vi" path="res://Scenes/ui/gold_ui.tscn" id="6_vfcn7"]
+[ext_resource type="Texture2D" uid="uid://b2b7w0rl2ep64" path="res://MyArt/heart.png" id="9_8v5xc"]
+[ext_resource type="Texture2D" uid="uid://wtx8vh0qdtwx" path="res://MyArt/WHEEL.png" id="13_rpyuh"]
+[ext_resource type="Shader" path="res://Scenes/run/scroll2.gdshader" id="13_whstr"]
+[ext_resource type="Texture2D" uid="uid://bt4okcofpe616" path="res://MyArt/arrow.png" id="15_4gtdt"]
 
-[node name="Run" type="Node"]
+[sub_resource type="LabelSettings" id="LabelSettings_pnwmc"]
+font_size = 9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dduft"]
+shader = ExtResource("13_whstr")
+
+[sub_resource type="Gradient" id="Gradient_q2wwa"]
+offsets = PackedFloat32Array(0, 0.256684, 0.483957, 0.574866, 0.671123, 1)
+colors = PackedColorArray(0.572549, 0.694118, 0, 1, 0.745098, 0.682353, 0.254902, 1, 0.941176, 0.282353, 0.231373, 1, 0.984314, 0.690196, 0.960784, 1, 0.176471, 0.670588, 0.976471, 1, 0.301961, 0.835294, 0.14902, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rkr21"]
+gradient = SubResource("Gradient_q2wwa")
+width = 4
+height = 12
+fill = 1
+fill_from = Vector2(0.410256, 0.683761)
+fill_to = Vector2(0.619658, 0.286325)
+repeat = 2
+
+[node name="Run" type="Node" groups=["run"]]
 script = ExtResource("1_ul7ne")
+buyable_cards = Array[Resource("res://custom_resources/card.gd")]([ExtResource("2_jpjs0"), ExtResource("2_jpjs0"), ExtResource("2_jpjs0"), ExtResource("3_oiobk"), ExtResource("4_cdn1g"), ExtResource("4_cdn1g"), ExtResource("4_cdn1g"), ExtResource("5_2oopx"), ExtResource("5_2oopx"), ExtResource("6_c4iqs"), ExtResource("6_c4iqs")])
 run_startup = ExtResource("2_5goow")
 
-[node name="Map" parent="." instance=ExtResource("1_q6m5s")]
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.5
+offset_top = -20.0
+offset_right = 44.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="CurrentView" type="Node" parent="."]
+[node name="BuyButton" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Buy Random Card $50"
+
+[node name="HealthButton" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Heal 10 for $30"
+
+[node name="ManaButton" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Increase Max Mana by 1 for $300"
 
 [node name="DebugButtons" type="VBoxContainer" parent="."]
-visible = false
 anchors_preset = 9
 anchor_bottom = 1.0
+offset_right = 23.0
 grow_vertical = 2
+alignment = 1
 
 [node name="MapButton" type="Button" parent="DebugButtons"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Map"
 
@@ -28,22 +86,107 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Battle"
 
-[node name="ShopButton" type="Button" parent="DebugButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Shop"
+[node name="CurrentView" type="Node" parent="."]
 
-[node name="TreasureButton" type="Button" parent="DebugButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "treasure"
+[node name="TopBar" type="CanvasLayer" parent="."]
+layer = 3
 
-[node name="RewardsButton" type="Button" parent="DebugButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "rewards"
+[node name="Background" type="ColorRect" parent="TopBar"]
+custom_minimum_size = Vector2(0, 28)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0.054902, 0.0627451, 0, 0.509804)
 
-[node name="CampfireButton" type="Button" parent="DebugButtons"]
+[node name="BarItems" type="HBoxContainer" parent="TopBar"]
+custom_minimum_size = Vector2(0, 28)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="GoldUI" parent="TopBar/BarItems" instance=ExtResource("6_vfcn7")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "campfire"
+
+[node name="PlayerHealth" type="HBoxContainer" parent="TopBar/BarItems"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="HealthIcon" type="TextureRect" parent="TopBar/BarItems/PlayerHealth"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("9_8v5xc")
+stretch_mode = 5
+
+[node name="HealthLabel" type="Label" parent="TopBar/BarItems/PlayerHealth"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "12/200"
+label_settings = SubResource("LabelSettings_pnwmc")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PlaceHolder" type="Control" parent="TopBar/BarItems"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DeckButton" type="TextureButton" parent="TopBar/BarItems" node_paths=PackedStringArray("counter")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture_normal = ExtResource("4_1q1js")
+script = ExtResource("4_sjqip")
+counter = NodePath("Counter")
+
+[node name="Counter" type="Label" parent="TopBar/BarItems/DeckButton"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 14.0
+offset_right = 8.0
+offset_bottom = 20.0
+text = "99"
+horizontal_alignment = 2
+
+[node name="DeckView" parent="TopBar" instance=ExtResource("6_2ny1w")]
+unique_name_in_owner = true
+visible = false
+
+[node name="WheelStuff" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="WheelBackground" type="TextureRect" parent="WheelStuff"]
+unique_name_in_owner = true
+texture_repeat = 2
+material = SubResource("ShaderMaterial_dduft")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_rkr21")
+metadata/_edit_use_anchors_ = true
+
+[node name="WheelPicker" type="TextureRect" parent="WheelStuff"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -23.0
+offset_right = -37.0
+offset_bottom = 17.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 1.5708
+texture = ExtResource("15_4gtdt")
+metadata/_edit_use_anchors_ = true
+
+[node name="Wheel" type="Sprite2D" parent="WheelStuff"]
+unique_name_in_owner = true
+position = Vector2(180, 99)
+texture = ExtResource("13_rpyuh")
+
+[connection signal="pressed" from="Buttons/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="Buttons/HealthButton" to="." method="_on_health_button_pressed"]
+[connection signal="pressed" from="Buttons/ManaButton" to="." method="_on_mana_button_pressed"]

@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdsw0c8x33yr8"]
+
+[ext_resource type="PackedScene" uid="uid://cshkcu1c3hp8y" path="res://Scenes/map/map.tscn" id="1_q6m5s"]
+[ext_resource type="Script" path="res://Scenes/run/run.gd" id="1_ul7ne"]
+[ext_resource type="Resource" uid="uid://tdl0fj7nne5s" path="res://Scenes/run/run_startup.tres" id="2_5goow"]
+
+[node name="Run" type="Node"]
+script = ExtResource("1_ul7ne")
+run_startup = ExtResource("2_5goow")
+
+[node name="Map" parent="." instance=ExtResource("1_q6m5s")]
+
+[node name="CurrentView" type="Node" parent="."]
+
+[node name="DebugButtons" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="MapButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Map"
+
+[node name="BattleButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Battle"
+
+[node name="ShopButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Shop"
+
+[node name="TreasureButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "treasure"
+
+[node name="RewardsButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "rewards"
+
+[node name="CampfireButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "campfire"

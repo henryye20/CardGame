@@ -10,7 +10,7 @@ extends Node2D
 
 func _ready() -> void:
 	#normally done on a run not on level but only one battle so things would reset between battles
-	var new_stats: CharacterStats = char_stats.create_instance()
+	var new_stats: CharacterStats = get_tree().get_first_node_in_group("run").character
 	battle_ui.char_stats = new_stats
 	player.stats = new_stats
 	
@@ -23,7 +23,7 @@ func _ready() -> void:
 	Events.player_died.connect(_on_player_died)
 	
 	start_battle(new_stats)
-	
+	battle_ui.initialize_card_pile_ui()
 
 func start_battle(stats:CharacterStats) -> void:
 	get_tree().paused = false
@@ -43,3 +43,7 @@ func _on_enemy_turn_ended() -> void:
 
 func _on_player_died() -> void:
 	Events.battle_over_screen_requested.emit("Game Over!", BattleOverPanel.Type.LOSE)
+
+#debug stuff
+#func _on_win_button_pressed():
+#	Events.battle_over_screen_requested.emit("Victory!", BattleOverPanel.Type.WIN)

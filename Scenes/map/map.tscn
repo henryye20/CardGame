@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cshkcu1c3hp8y"]
-
-[ext_resource type="Script" path="res://Scenes/map/map.gd" id="1_un81m"]
+[gd_scene format=3 uid="uid://cshkcu1c3hp8y"]
 
 [node name="Map" type="Control"]
 layout_mode = 3
@@ -10,7 +8,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_un81m")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -39,13 +36,12 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "Map"
+text = "Main"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
-text = "Go Back"
+text = "Buy Random Card $50"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

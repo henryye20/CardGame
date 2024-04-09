@@ -1,6 +1,6 @@
 extends EnemyAction
 
-@export var damage:= 7
+@export var damage:= 5
 
 
 func perform_action() -> void:
@@ -23,13 +23,10 @@ func perform_action() -> void:
 	tween.parallel().tween_property(enemy, "scale",Vector2(1.5,1.5),0.3)
 	tween.tween_callback(damage_effect.execute.bind(target_array))
 	tween.tween_property(enemy, "scale",Vector2(1,1),0.1)
-	
-	
 	tween.tween_interval(0.25)
-	
-	print("tweening")
+	tween.tween_property(enemy.sprite_2d,"rotation_degrees",0,.4)
+	tween.tween_callback(damage_effect.execute.bind(target_array))
 	tween.tween_property(enemy,"global_position", start, 0.4)
-	tween.tween_property(enemy.sprite_2d,"rotation_degrees",0,0)
 	
 	tween.finished.connect(
 		func():

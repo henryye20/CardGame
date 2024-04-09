@@ -11,12 +11,16 @@ signal card_played(card:Card)
 signal card_tooltip_requested(card:Card)
 signal tooltip_hide_requested()
 
+signal double_played
+signal gamble_played
+
 #player events
 signal player_hand_drawn
 signal player_hand_discarded
 signal player_turn_ended
 signal player_hit
 signal player_died
+signal player_stats(run)
 
 #Enemy events
 signal enemy_action_completed(enemy:Enemy)
@@ -26,17 +30,7 @@ signal enemy_turn_ended
 signal battle_over_screen_requested(text:String,type:BattleOverPanel.Type)
 signal battle_won
 
-#map vents
-signal map_exited
-
-#shop events
-signal shop_exited
-
-#Campfire events
-signal campfire_exited
-
 #battle reward events
 signal battle_reward_exited
 
-# treasure rooom events
-signal treasure_room_exited
+

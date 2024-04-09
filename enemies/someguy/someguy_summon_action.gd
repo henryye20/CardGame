@@ -2,7 +2,7 @@ extends EnemyAction
 @export var hp_threshold := -1
 
 var already_used := false
-var someguy := preload("res://enemies/someguy/someguy.tscn")
+
 
 func is_performable() -> bool:
 	if not enemy or already_used:
